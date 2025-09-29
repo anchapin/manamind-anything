@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: manamind-postgres
+    environment:
+      POSTGRES_DB: manamind
+      POSTGRES_USER: manamind_user
+      POSTGRES_PASSWORD: manamind_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - manamind-network
+
+  # Redis (for caching and sessions)
+  redis:
+    image: redis:7-alpine
+    container_name: manamind-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - manamind-network
+
+  # Web Application
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: manamind-web
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://manamind_user:manamind_password@postgres:5432/manamind
+      - REDIS_URL=redis://redis:6379
+      - JWT_SECRET=your-super-secret-jwt-key-here
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - manamind-network
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./storage/models:/app/storage/models
+
+volumes:
+  postgres_data:
+
+networks:
+  manamind-network:
+    driver: bridge
