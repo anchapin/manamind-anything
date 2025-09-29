@@ -103,7 +103,7 @@ function NotFoundScreen() {
         {
           type: 'sandbox:web:create',
           path: missingPath,
-          view: 'mobile',
+          view: 'web',
         },
         '*'
       );
@@ -163,7 +163,7 @@ function NotFoundScreen() {
             {!isExpoSitemap && sitemap ? (
               <View style={styles.pagesContainer}>
                 <View style={styles.pagesListContainer}>
-                  <Text style={styles.pagesLabel}>MOBILE</Text>
+                  <Text style={styles.pagesLabel}>WEB</Text>
                   {((sitemap as ParentSitemap).expoPages || []).map((route, index: number) => (
                     <TouchableOpacity
                       key={route.id}
@@ -178,7 +178,7 @@ function NotFoundScreen() {
             ) : (
               <View style={styles.pagesContainer}>
                 <View style={styles.pagesListContainer}>
-                  <Text style={styles.pagesLabel}>MOBILE</Text>
+                  <Text style={styles.pagesLabel}>WEB</Text>
                   {(availableRoutes as SitemapType[]).map((route: SitemapType, index: number) => {
                     const url =
                       typeof route.href === 'string' ? route.href : route.href?.pathname || '/';

@@ -54,14 +54,14 @@ const Wrapper = memo(() => {
   );
 });
 const healthyResponse = {
-  type: 'sandbox:mobile:healthcheck:response',
+  type: 'sandbox:web:healthcheck:response',
   healthy: true,
 };
 
 const useHandshakeParent = () => {
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      if (event.data.type === 'sandbox:mobile:healthcheck') {
+      if (event.data.type === 'sandbox:web:healthcheck') {
         window.parent.postMessage(healthyResponse, '*');
       }
     };
@@ -88,7 +88,7 @@ const CreateApp = () => {
     };
 
     window.addEventListener('message', handleMessage);
-    window.parent.postMessage({ type: 'sandbox:mobile:ready' }, '*');
+    window.parent.postMessage({ type: 'sandbox:web:ready' }, '*');
     return () => {
       window.removeEventListener('message', handleMessage);
     };
@@ -97,7 +97,7 @@ const CreateApp = () => {
   useEffect(() => {
     window.parent.postMessage(
       {
-        type: 'sandbox:mobile:navigation',
+        type: 'sandbox:web:navigation',
         pathname,
       },
       '*'

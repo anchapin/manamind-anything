@@ -2,7 +2,7 @@
 
 ## System Architecture
 
-The ManaMind Training System is a sophisticated multi-platform application that combines web-based AI training dashboards with mobile companion apps. The system is built around a central AI training engine that supports multiple training approaches including rule-based bots, neural networks, and external opponent integration.
+The ManaMind Training System is a sophisticated web-based application that combines AI training dashboards with a central AI training engine that supports multiple training approaches including rule-based bots, neural networks, and external opponent integration.
 
 ### High-Level Architecture
 
@@ -133,11 +133,11 @@ User Action → React Component → Custom Hook → API Call → Server Response
 Component State ←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←
 ```
 
-### 2. Mobile Application Architecture
+### 2. Web Application Architecture
 
-#### React Native Structure
+#### React/Expo Structure
 ```
-createxyz-project/_/apps/mobile/
+createxyz-project/_/apps/web/
 ├── app/                          # Expo Router app structure
 │   ├── (tabs)/                   # Tab navigation
 │   │   ├── _layout.tsx           # Tab layout
@@ -400,10 +400,10 @@ Business Logic → Data Access → SQL Query → Execution → Mapped Objects
 - **React Query**: Server state management
 - **Zustand**: Lightweight state management
 
-### Mobile Technologies
-- **Expo**: React Native development platform
-- **React Native**: Cross-platform mobile development
-- **Expo Router**: File-based routing for React Native
+### Web Technologies
+- **Expo**: React development platform
+- **React Native Web**: Cross-platform web development
+- **Expo Router**: File-based routing for React
 - **React Native Elements**: UI component library
 - **AsyncStorage**: Local storage solution
 - **Push Notifications**: Expo push notifications
@@ -512,11 +512,11 @@ UI Components → API Adapters → Forge, Analytics, Auth, etc.
 - **Model Optimization**: Pruning, quantization, and caching
 - **Memory Management**: Efficient memory usage and garbage collection
 
-### Mobile Performance
-- **Bundle Optimization**: Keep mobile bundle size minimal
-- **Rendering Optimization**: Use FlatList and performance optimizations
-- **Native Modules**: Performance-critical native implementations
-- **Memory Management**: Monitor and optimize mobile memory usage
+### Web Performance
+- **Bundle Optimization**: Keep web bundle size minimal
+- **Rendering Optimization**: Use virtualization and performance optimizations
+- **Code Splitting**: Efficient loading of components
+- **Memory Management**: Monitor and optimize web memory usage
 
 ## Monitoring & Observability
 
@@ -564,10 +564,10 @@ UI Components → API Adapters → Forge, Analytics, Auth, etc.
 - **Data Parallelism**: Process data in parallel across multiple workers
 - **Batch Processing**: Efficient batch processing for large datasets
 
-### Mobile App Scalability
-- **Cloud Infrastructure**: Scalable cloud infrastructure for mobile backend
+### Web App Scalability
+- **Cloud Infrastructure**: Scalable cloud infrastructure for web backend
 - **Offline Support**: Offline functionality with sync capabilities
 - **Push Notifications**: Scalable push notification infrastructure
-- **Content Delivery**: CDN for mobile app assets and updates
+- **Content Delivery**: CDN for web app assets and updates
 
 This architecture overview provides a comprehensive understanding of the ManaMind Training System's technical structure. For detailed development guidance, refer to the specialized documentation files in the `.clinerules/` directory.

@@ -32,7 +32,7 @@ if (typeof window !== 'undefined') {
       try {
         window.parent.postMessage(
           {
-            type: 'sandbox:mobile:console-write',
+            type: 'sandbox:web:console-write',
             __expoConsole: true,
             level,
             args: args.map(serialize),

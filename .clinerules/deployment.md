@@ -2,11 +2,10 @@
 
 ## Deployment Overview
 
-The ManaMind Training System consists of multiple components that need to be deployed and managed together. This guide covers the deployment process for the web application, mobile application, backend services, and infrastructure components.
+The ManaMind Training System consists of multiple components that need to be deployed and managed together. This guide covers the deployment process for the web application, backend services, and infrastructure components.
 
 ### Deployment Components
 - **Web Application**: React-based dashboard and UI
-- **Mobile Application**: React Native companion app
 - **Backend API**: Hono server with AI training capabilities
 - **Database**: PostgreSQL/Neon database
 - **AI Training Infrastructure**: Neural network training and Forge integration
@@ -157,12 +156,12 @@ pm2 start ecosystem.config.js
 - [ ] SSL certificate is valid
 - [ ] Performance is acceptable
 
-## Mobile Application Deployment
+## Web Application Deployment
 
 ### Build Process
 ```bash
-# Navigate to mobile app directory
-cd createxyz-project/_/apps/mobile
+# Navigate to web app directory
+cd createxyz-project/_/apps/web
 
 # Install dependencies
 npm install

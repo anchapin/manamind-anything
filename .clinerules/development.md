@@ -15,8 +15,8 @@ git clone <repository-url>
 cd manamind-training-system
 npm install
 
-# Install mobile app dependencies
-cd createxyz-project/_/apps/mobile && npm install
+# Install web app dependencies
+cd createxyz-project/_/apps/web && npm install
 
 # Set up environment variables
 cp .env.example .env
@@ -28,8 +28,8 @@ cp .env.example .env
 # Web application (port 4000)
 npm run dev
 
-# Mobile application
-cd createxyz-project/_/apps/mobile && expo start
+# Web application
+cd createxyz-project/_/apps/web && expo start
 
 # Type checking
 npm run typecheck
@@ -50,8 +50,8 @@ npm test
 │   ├── components/                  # React components
 │   │   └── dashboard/               # Dashboard components
 │   └── utils/                       # Utility functions
-├── createxyz-project/               # Mobile application
-│   └── _/apps/mobile/                # Expo React Native app
+├── createxyz-project/               # Web application
+│   └── _/apps/web/                   # Expo React app
 ├── plugins/                         # Vite build plugins
 ├── test/                            # Test files
 └── .clinerules/                      # Development documentation
@@ -63,7 +63,7 @@ npm test
 ```bash
 # Start development
 npm run dev                    # Web app
-cd createxyz-project/_/apps/mobile && expo start  # Mobile app
+cd createxyz-project/_/apps/web && expo start     # Web app
 
 # Code quality
 npm run typecheck            # TypeScript checking
@@ -146,17 +146,17 @@ git push origin feature/ai-training-enhancement
 - API integration and error handling
 - Responsive design and accessibility
 
-### 3. Mobile Application Development
-**Focus Area**: React Native companion app
+### 3. Web Application Development
+**Focus Area**: React web app
 
 **Key Files**:
-- `createxyz-project/_/apps/mobile/` - Mobile app source
-- `createxyz-project/_/apps/mobile/app/` - Expo Router app structure
+- `createxyz-project/_/apps/web/` - Web app source
+- `createxyz-project/_/apps/web/app/` - Expo Router app structure
 
 **Development Process**:
-1. **Feature planning**: Define mobile-specific features
-2. **Implementation**: Write React Native components
-3. **Native integration**: Use device features (camera, storage, etc.)
+1. **Feature planning**: Define web-specific features
+2. **Implementation**: Write React components
+3. **Integration**: Use web features and APIs
 4. **Testing**: Device testing, emulator testing
 5. **Build**: Create production builds for iOS and Android
 
@@ -485,15 +485,15 @@ npm test
 npm run dev
 ```
 
-### Mobile App Development
+### Web App Development
 ```bash
-# 1. Navigate to mobile app directory
-cd createxyz-project/_/apps/mobile
+# 1. Navigate to web app directory
+cd createxyz-project/_/apps/web
 
 # 2. Create new screen or component
 touch app/screens/NewScreen.tsx
 
-# 3. Implement mobile feature
+# 3. Implement web feature
 # Edit app/screens/NewScreen.tsx
 
 # 4. Add navigation
@@ -522,11 +522,11 @@ expo build:ios
 - **GPU Utilization**: Leverage GPU acceleration for neural networks
 - **Parallel Processing**: Use worker threads for parallel computation
 
-### Mobile App Performance
-- **Bundle Size**: Keep mobile bundle size minimal
-- **Rendering Optimization**: Use FlatList and other performance optimizations
-- **Native Modules**: Use native modules for performance-critical features
-- **Memory Management**: Monitor and manage mobile memory usage
+### Web App Performance
+- **Bundle Size**: Keep web bundle size minimal
+- **Rendering Optimization**: Use virtualization and other performance optimizations
+- **Code Splitting**: Use dynamic imports for efficient loading
+- **Memory Management**: Monitor and manage web memory usage
 
 ## Debugging Tips
 
@@ -565,9 +565,9 @@ expo build:ios
 # Build web application
 npm run build
 
-# Build mobile application
-cd createxyz-project/_/apps/mobile
-expo build:android  # or expo build:ios
+# Build web application
+cd createxyz-project/_/apps/web
+expo build:web
 
 # Run final tests
 npm test
@@ -575,8 +575,8 @@ npm test
 
 ### Deployment Steps
 1. **Prepare environment**: Configure production environment
-2. **Deploy web app**: Deploy to hosting platform
-3. **Deploy mobile app**: Submit to app stores or deploy via OTA
+2. **Deploy backend**: Deploy API and backend services
+3. **Deploy web app**: Deploy to production web hosting
 4. **Run migrations**: Execute database migrations
 5. **Monitor deployment**: Check for issues and performance
 6. **Rollback plan**: Prepare rollback strategy if needed

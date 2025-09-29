@@ -2,18 +2,18 @@
 
 ## Project Overview
 
-**ManaMind Training System** is a sophisticated Magic: The Gathering (MTG) AI training platform that combines neural networks, rule-based bots, and real-time simulation. This project features both web and mobile applications with a strong focus on AI development and training.
+**ManaMind Training System** is a sophisticated Magic: The Gathering (MTG) AI training platform that combines neural networks, rule-based bots, and real-time simulation. This project features a web application with a strong focus on AI development and training.
 
 ### Quick Identity
 - **Project Name**: ManaMind Training System
 - **Primary Focus**: MTG AI training and real-time simulation
-- **Key Components**: Web dashboard, mobile app, AI training system, Forge integration
+- **Key Components**: Web dashboard, AI training system, Forge integration
 - **Tech Stack**: React 18, React Router v7, TypeScript, Expo/React Native, Hono server
 
 ### Core Features
 - **AI Training**: Neural networks, rule-based bots, hybrid training approaches
 - **Real-time Dashboard**: Live training metrics, performance visualization
-- **Cross-platform**: Web application + React Native mobile app
+- **Cross-platform**: Web application with React Native Web support
 - **Forge Integration**: Training against real MTG opponents
 - **Live Demo**: Working bot vs bot simulations with database storage
 
@@ -22,7 +22,7 @@
 ### Prerequisites
 - Node.js 18+
 - npm or yarn
-- Expo CLI (for mobile development)
+- Expo CLI (for web development)
 - Database access (PostgreSQL/Neon)
 
 ### Initial Setup
@@ -30,12 +30,12 @@
 # Install web app dependencies
 npm install
 
-# Install mobile app dependencies
-cd createxyz-project/_/apps/mobile && npm install
+# Install web app dependencies
+cd createxyz-project/_/apps/web && npm install
 
 # Start development servers
 npm run dev                    # Web app (port 4000)
-cd createxyz-project/_/apps/mobile && expo start  # Mobile app
+cd createxyz-project/_/apps/web && expo start     # Web app
 ```
 
 ### Key AI Development Files
@@ -57,12 +57,11 @@ npm run dev          # Start development server (port 4000)
 npm run typecheck    # TypeScript type checking
 ```
 
-### Mobile Application
+### Web Application
 ```bash
-cd createxyz-project/_/apps/mobile
+cd createxyz-project/_/apps/web
 expo start           # Start Expo development server
-expo build:android   # Build for Android
-expo build:ios       # Build for iOS
+expo build:web       # Build for web
 ```
 
 ### Testing
@@ -88,8 +87,8 @@ npm run test:ui      # Run tests with UI (if configured)
 │   ├── components/                  # React components
 │   │   └── dashboard/               # Dashboard components
 │   └── utils/                       # Utility functions
-├── createxyz-project/               # Mobile application
-│   └── _/apps/mobile/                # Expo React Native app
+├── createxyz-project/               # Web application
+│   └── _/apps/web/                   # Expo React app
 ├── plugins/                         # Vite build plugins
 └── test/                            # Test files
 ```
