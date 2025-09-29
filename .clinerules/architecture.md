@@ -11,12 +11,12 @@ The ManaMind Training System is a sophisticated web-based application that combi
 │                        ManaMind Training System                    │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐  │
-│  │   Web App       │  │   Mobile App    │  │   Admin Tools   │  │
-│  │   (React)       │  │   (React Native)│  │   (CLI/Web)     │  │
-│  │                 │  │                 │  │                 │  │
-│  │ • Dashboard     │  │ • Companion     │  │ • System Admin  │  │
-│  │ • Training UI   │  │ • Mobile Gaming  │  │ • User Management│  │
+│  ┌─────────────────┐  ┌─────────────────┐  │
+│  │   Web App       │  │   Admin Tools   │  │
+│  │   (React)       │  │   (CLI/Web)     │  │
+│  │                 │  │                 │  │
+│  │ • Dashboard     │  │ • System Admin  │  │
+│  │ • Training UI   │  │ • User Management│  │
 │  │ • Live Demo     │  │ • Notifications │  │ • Analytics     │  │
 │  │ • Account Mgmt  │  │ • Sync Features │  │ • Monitoring    │  │
 │  └─────────────────┘  └─────────────────┘  └─────────────────┘  │
@@ -135,27 +135,18 @@ Component State ←←←←←←←←←←←←←←←←←←←←←�
 
 ### 2. Web Application Architecture
 
-#### React/Expo Structure
+#### React/React Router Structure
 ```
-createxyz-project/_/apps/web/
-├── app/                          # Expo Router app structure
-│   ├── (tabs)/                   # Tab navigation
-│   │   ├── _layout.tsx           # Tab layout
-│   │   ├── index.tsx             # Home screen
-│   │   ├── training.tsx         # Training screen
-│   │   └── profile.tsx          # Profile screen
-│   ├── (auth)/                   # Authentication screens
-│   │   ├── _layout.tsx           # Auth layout
-│   │   ├── login.tsx            # Login screen
-│   │   └── register.tsx        # Registration screen
-│   ├── game/                     # Game screens
-│   │   ├── play.tsx             # Game play screen
-│   │   └── results.tsx          # Game results screen
-│   ├── settings/                 # Settings screens
-│   │   ├── _layout.tsx           # Settings layout
-│   │   ├── account.tsx          # Account settings
-│   │   └── notifications.tsx    # Notification settings
-│   └── _layout.tsx              # Root layout
+src/
+├── app/                          # React Router app structure
+│   ├── api/                      # API routes
+│   ├── demo/                     # Demo page
+│   ├── neural-forge/             # Neural forge interface
+│   ├── account/                  # Account pages
+│   └── layout.tsx                # Root layout
+├── components/                   # React components
+│   └── dashboard/                # Dashboard components
+└── utils/                        # Utility functions
 ├── components/                   # React Native components
 │   ├── GameBoard.tsx            # Game board component
 │   ├── TrainingProgress.tsx     # Training progress component
@@ -181,12 +172,6 @@ createxyz-project/_/apps/web/
 - **Custom Native Modules**: For platform-specific functionality
 - **React Native Bridges**: For communication between JS and native code
 
-#### Mobile-Web Sync
-```
-Mobile App ←→ API Layer ←→ Web App
-    ↓               ↓              ↓
-Local Storage → Database Sync → Real-time Updates
-```
 
 ### 3. API Layer Architecture
 
@@ -428,19 +413,11 @@ Business Logic → Data Access → SQL Query → Execution → Mapped Objects
 - **Docker**: Containerization
 - **GitHub Actions**: CI/CD pipeline
 - **Vercel**: Web application deployment
-- **Expo EAS**: Mobile application deployment
 - **PostgreSQL**: Database hosting
 - **Cloudflare**: CDN and security
 
 ## Integration Patterns
 
-### 1. Web-Mobile Integration
-```
-Web App ←→ API Layer ←→ Mobile App
-    ↓           ↓           ↓
-Real-time → WebSocket → Push Notifications
-Updates     Sync        Local Storage
-```
 
 ### 2. AI System Integration
 ```

@@ -1,6 +1,6 @@
 # ManaMind Training System
 
-A sophisticated Magic: The Gathering (MTG) AI training platform that combines neural networks, rule-based bots, and real-time simulation. This system features both web and mobile applications with a strong focus on AI development and training.
+A sophisticated Magic: The Gathering (MTG) AI training platform that combines neural networks, rule-based bots, and real-time simulation. This system features a web application with a strong focus on AI development and training.
 
 ## 🚀 Quick Start
 
@@ -14,7 +14,7 @@ Choose your preferred setup method:
 ### Key Features
 - **AI Training System**: Neural networks, rule-based bots, and hybrid training approaches
 - **Real-time Dashboard**: Live training metrics, performance visualization, and session controls
-- **Cross-platform**: Web application + React Native mobile companion app
+- **Web Application**: React-based interface with real-time dashboard
 - **Forge Integration**: Training against real MTG opponents for realistic scenarios
 - **Live Demo**: Working bot vs bot simulations with database storage
 - **Model Management**: Neural network versioning, evaluation, and deployment
@@ -22,7 +22,6 @@ Choose your preferred setup method:
 ### Tech Stack
 - **Frontend**: React 18, React Router v7, TypeScript, Tailwind CSS
 - **Backend**: Hono server, Node.js, PostgreSQL/Neon
-- **Mobile**: Expo React Native, TypeScript
 - **AI/ML**: TensorFlow.js, Neural Networks, AlphaZero algorithm
 - **Build Tools**: Vite, Expo CLI, Docker
 
@@ -37,7 +36,6 @@ Choose your preferred setup method:
 ### Optional Tools
 - **Docker**: For containerized setup (Option 2)
 - **Docker Compose**: For multi-container orchestration
-- **Expo CLI**: For mobile app development
 - **PostgreSQL**: Local database development
 
 ## ⚙️ Option 1: Regular Local Setup
@@ -60,24 +58,10 @@ npm install
 npm run typecheck  # Should complete without errors
 ```
 
-#### Mobile Application
-```bash
-# Navigate to mobile app directory
-cd createxyz-project/_/apps/mobile
-
-# Install mobile dependencies
-npm install
-
-# Apply patches (required for Expo compatibility)
-npm run postinstall
-
-# Navigate back to project root
-cd ../../..
-```
 
 ### 3. Environment Configuration
 
-Create environment files for both applications:
+Create environment file for the web application:
 
 #### Web Application (.env)
 ```bash
@@ -113,23 +97,6 @@ SENTRY_DSN=your-sentry-dsn
 ANALYTICS_ID=your-analytics-id
 ```
 
-#### Mobile Application (createxyz-project/_/apps/mobile/.env)
-```bash
-# Create mobile environment file
-touch createxyz-project/_/apps/mobile/.env
-
-# Add mobile-specific configuration
-```
-
-Mobile environment variables:
-```env
-# Expo Configuration
-EXPO_APPLE_APP_ID=com.yourcompany.manamind
-EXPO_ANDROID_PACKAGE=com.yourcompany.manamind
-
-# API Configuration
-API_URL=http://localhost:4000
-```
 
 ### 4. Database Setup
 
@@ -195,27 +162,12 @@ npm run dev
 # http://localhost:4000
 ```
 
-#### Mobile Application
-```bash
-# Navigate to mobile app directory
-cd createxyz-project/_/apps/mobile
-
-# Start Expo development server
-expo start
-
-# Choose your preferred platform:
-# - Press 'a' to open on Android emulator/device
-# - Press 'i' to open on iOS simulator
-# - Press 'w' to open in web browser
-# - Scan QR code with Expo Go app on mobile device
-```
 
 ### 7. Verify the Setup
 
 1. **Web Application**: Open http://localhost:4000 in your browser
-2. **Mobile Application**: Open Expo Go and scan the QR code, or use emulator/simulator
-3. **Demo Page**: Visit http://localhost:4000/demo to test the AI bot functionality
-4. **API Endpoints**: Test API endpoints at http://localhost:4000/api
+2. **Demo Page**: Visit http://localhost:4000/demo to test the AI bot functionality
+3. **API Endpoints**: Test API endpoints at http://localhost:4000/api
 
 ## 🐳 Option 2: Docker Compose Setup
 
@@ -287,25 +239,7 @@ services:
       - /app/node_modules
       - ./storage/models:/app/storage/models
 
-  # Mobile Development Server (Optional)
-  mobile:
-    build:
-      context: createxyz-project/_/apps/mobile
-      dockerfile: Dockerfile
-    container_name: manamind-mobile
-    ports:
-      - "8081:8081"  # Expo Metro bundler
-    environment:
-      - EXPO_DEVTOOLS_LISTEN_ADDRESS=0.0.0.0
-      - API_URL=http://web:4000
-    depends_on:
-      - web
-    networks:
-      - manamind-network
-    volumes:
-      - ./createxyz-project/_/apps/mobile:/app
-      - /app/node_modules
-
+  
 volumes:
   postgres_data:
 
@@ -344,35 +278,6 @@ EXPOSE 4000
 CMD ["npm", "run", "dev"]
 ```
 
-### 5. Create Dockerfile for Mobile Application
-
-Create `createxyz-project/_/apps/mobile/Dockerfile`:
-
-```dockerfile
-# Use official Node.js runtime as base image
-FROM node:18-alpine
-
-# Set working directory
-WORKDIR /app
-
-# Copy package files
-COPY package*.json ./
-
-# Install dependencies
-RUN npm ci
-
-# Apply patches
-RUN npm run postinstall
-
-# Copy source code
-COPY . .
-
-# Expose port for Expo Metro bundler
-EXPOSE 8081
-
-# Start Expo development server
-CMD ["expo", "start"]
-```
 
 ### 6. Create .env.docker File
 
@@ -411,7 +316,6 @@ docker-compose up --build -d
 ### 8. Access the Applications
 
 - **Web Application**: http://localhost:4000
-- **Mobile Development**: http://localhost:8081 (Expo Metro bundler)
 - **Database**: localhost:5432
 - **Redis**: localhost:6379
 
@@ -423,7 +327,6 @@ docker-compose logs -f
 
 # View specific service logs
 docker-compose logs -f web
-docker-compose logs -f mobile
 docker-compose logs -f postgres
 ```
 
@@ -450,15 +353,6 @@ npm run preview      # Preview production build
 npm test             # Run tests (if configured)
 ```
 
-#### Mobile Application
-```bash
-cd createxyz-project/_/apps/mobile
-
-expo start           # Start Expo development server
-expo build:android   # Build Android APK
-expo build:ios       # Build iOS IPA
-expo publish         # Publish to Expo
-```
 
 ### Testing the AI Bot
 
@@ -540,17 +434,6 @@ docker rm -f $(docker ps -aq)
 docker rmi -f $(docker images -aq)
 ```
 
-#### Mobile App Issues
-```bash
-# Clear Expo cache
-expo start --clear
-
-# Reset Metro bundler
-expo start --reset
-
-# Check Expo CLI version
-expo --version
-```
 
 #### Dependency Issues
 ```bash
@@ -558,11 +441,6 @@ expo --version
 rm -rf node_modules package-lock.json
 npm install
 
-# For mobile app
-cd createxyz-project/_/apps/mobile
-rm -rf node_modules package-lock.json
-npm install
-npm run postinstall
 ```
 
 ### Performance Issues
@@ -589,8 +467,6 @@ npm run postinstall
 │   ├── components/                  # React components
 │   │   └── dashboard/               # Dashboard components
 │   └── utils/                       # Utility functions
-├── createxyz-project/               # Mobile application
-│   └── _/apps/mobile/                # Expo React Native app
 ├── plugins/                         # Vite build plugins
 ├── test/                            # Test files
 ├── .clinerules/                      # Development documentation
@@ -661,7 +537,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 🙏 Acknowledgments
 
 - **React Team** for the excellent React framework and ecosystem
-- **Expo Team** for the amazing React Native development platform
 - **Neon** for the serverless PostgreSQL solution
 - **TensorFlow.js** for bringing machine learning to the browser
 

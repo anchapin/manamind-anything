@@ -30,12 +30,8 @@
 # Install web app dependencies
 npm install
 
-# Install web app dependencies
-cd createxyz-project/_/apps/web && npm install
-
 # Start development servers
 npm run dev                    # Web app (port 4000)
-cd createxyz-project/_/apps/web && expo start     # Web app
 ```
 
 ### Key AI Development Files
@@ -59,9 +55,8 @@ npm run typecheck    # TypeScript type checking
 
 ### Web Application
 ```bash
-cd createxyz-project/_/apps/web
-expo start           # Start Expo development server
-expo build:web       # Build for web
+npm run dev           # Start development server
+npm run build         # Build for production
 ```
 
 ### Testing
@@ -87,8 +82,6 @@ npm run test:ui      # Run tests with UI (if configured)
 │   ├── components/                  # React components
 │   │   └── dashboard/               # Dashboard components
 │   └── utils/                       # Utility functions
-├── createxyz-project/               # Web application
-│   └── _/apps/web/                   # Expo React app
 ├── plugins/                         # Vite build plugins
 └── test/                            # Test files
 ```
@@ -140,7 +133,6 @@ npm run test:ui      # Run tests with UI (if configured)
 ### Development Server Issues
 - **Port conflicts**: Ensure port 4000 is available for web app
 - **Hot reload**: Vite HMR may need manual restart for some changes
-- **Mobile app**: Clear Expo cache if build issues occur
 
 ### AI Training Issues
 - **Training sessions**: Monitor logs for session management problems

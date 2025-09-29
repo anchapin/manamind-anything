@@ -16,7 +16,7 @@ cd manamind-training-system
 npm install
 
 # Install web app dependencies
-cd createxyz-project/_/apps/web && npm install
+npm install
 
 # Set up environment variables
 cp .env.example .env
@@ -27,9 +27,6 @@ cp .env.example .env
 ```bash
 # Web application (port 4000)
 npm run dev
-
-# Web application
-cd createxyz-project/_/apps/web && expo start
 
 # Type checking
 npm run typecheck
@@ -50,8 +47,6 @@ npm test
 │   ├── components/                  # React components
 │   │   └── dashboard/               # Dashboard components
 │   └── utils/                       # Utility functions
-├── createxyz-project/               # Web application
-│   └── _/apps/web/                   # Expo React app
 ├── plugins/                         # Vite build plugins
 ├── test/                            # Test files
 └── .clinerules/                      # Development documentation
@@ -63,7 +58,6 @@ npm test
 ```bash
 # Start development
 npm run dev                    # Web app
-cd createxyz-project/_/apps/web && expo start     # Web app
 
 # Code quality
 npm run typecheck            # TypeScript checking
@@ -150,8 +144,8 @@ git push origin feature/ai-training-enhancement
 **Focus Area**: React web app
 
 **Key Files**:
-- `createxyz-project/_/apps/web/` - Web app source
-- `createxyz-project/_/apps/web/app/` - Expo Router app structure
+- `src/` - Web app source
+- `src/app/` - React Router app structure
 
 **Development Process**:
 1. **Feature planning**: Define web-specific features
@@ -377,7 +371,6 @@ main                    # Production branch
 ├── feature/           # Feature branches
 │   ├── feature/ai-enhancement
 │   ├── feature/dashboard-redesign
-│   └── feature/mobile-sync
 ├── hotfix/            # Hotfix branches
 │   └── hotfix/critical-bug-fix
 └── release/           # Release branches
@@ -487,8 +480,8 @@ npm run dev
 
 ### Web App Development
 ```bash
-# 1. Navigate to web app directory
-cd createxyz-project/_/apps/web
+# 1. Ensure you're in project root
+cd .
 
 # 2. Create new screen or component
 touch app/screens/NewScreen.tsx
@@ -542,11 +535,6 @@ expo build:ios
 - **Performance Monitoring**: Track training speed and resource usage
 - **Error Analysis**: Analyze training errors and convergence issues
 
-### Mobile App Debugging
-- **Expo DevTools**: Use Expo development tools
-- **React Native Debugger**: Use React Native debugger
-- **Device Logs**: Check device logs for errors
-- **Native Debugging**: Use native debuggers for platform-specific issues
 
 ## Deployment Preparation
 
@@ -564,10 +552,6 @@ expo build:ios
 ```bash
 # Build web application
 npm run build
-
-# Build web application
-cd createxyz-project/_/apps/web
-expo build:web
 
 # Run final tests
 npm test

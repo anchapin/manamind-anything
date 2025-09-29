@@ -26,7 +26,6 @@ The ManaMind Training System consists of multiple components that need to be dep
 - **npm or yarn**: Package manager
 - **Docker**: Containerization (optional)
 - **Git**: Version control
-- **Expo CLI**: Mobile app deployment
 - **Vercel CLI**: Web app deployment (if using Vercel)
 
 ### Environment Variables
@@ -54,9 +53,6 @@ TRAINING_MAX_MEMORY=4096 # MB
 SENTRY_DSN=your-sentry-dsn
 ANALYTICS_ID=your-analytics-id
 
-# Mobile App Configuration
-EXPO_APPLE_APP_ID=com.yourcompany.manamind
-EXPO_ANDROID_PACKAGE=com.yourcompany.manamind
 ```
 
 ## Web Application Deployment
@@ -160,8 +156,8 @@ pm2 start ecosystem.config.js
 
 ### Build Process
 ```bash
-# Navigate to web app directory
-cd createxyz-project/_/apps/web
+# Navigate to project root directory
+cd .
 
 # Install dependencies
 npm install
@@ -231,13 +227,8 @@ expo build:ios -t archive
 7. **Submit for Review**: Wait for Apple approval
 
 ### Post-Deployment Checks
-- [ ] Mobile app installs correctly
 - [ ] All features are working
 - [ ] API integration is functional
-- [ ] Push notifications are working
-- [ ] Offline functionality is working
-- [ ] Performance is acceptable on target devices
-- [ ] App store approval is obtained
 
 ## Backend API Deployment
 
@@ -700,7 +691,6 @@ psql $DATABASE_URL < /backups/database_20231201_120000.sql
 - [ ] API endpoints are responding
 - [ ] Database connections are working
 - [ ] AI training is functional
-- [ ] Mobile app is working
 - [ ] Monitoring data is being collected
 - [ ] Performance is acceptable
 - [ ] Security measures are working
@@ -723,11 +713,6 @@ psql $DATABASE_URL < /backups/database_20231201_120000.sql
 - **Static Asset Issues**: Check CDN configuration and file paths
 - **Performance Issues**: Review bundle size and optimize assets
 
-### Mobile Application Issues
-- **Build Failures**: Check dependencies and Expo configuration
-- **Store Rejection**: Review app store guidelines and fix issues
-- **API Integration**: Verify API endpoints and authentication
-- **Performance Issues**: Optimize bundle size and native modules
 
 ### Backend API Issues
 - **Database Connection**: Verify connection string and credentials
